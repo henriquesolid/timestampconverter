@@ -21,32 +21,25 @@
   </head>
   <body>
     
-    <form class="form-signin">
+    <div class="form-signin card border-primary mb-3" style="max-width: 18rem;">
             <div class="text-center mb-4">
-              <!-- <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
-            <img class="mb-4" src="img/logo.svg" alt="" width="72" height="72">
-
-              <!-- https://www.cct.ie/wp-content/themes/hdcct/img/atoms/logo.jpg -->
-              
-              <h1 class="h3 mb-3 font-weight-normal">Floating labels</h1>
-              <h1 onclick="hello()">Hello, world!</h1>
-    <h1 id="greeting"></h1>
-    <p>A timestamp is a sequence of characters or encoded information identifying when a certain event occurred, usually giving date and time of day, sometimes accurate to a small fraction of a second. The term derives from rubber stamps used in offices to stamp the current date, and sometimes time, in ink on paper documents, to record when the document was received. Common examples of this type of timestamp are a postmark on a letter or the "in" and "out" times on a time card.</p>
-              <p>Build form controls with floating labels via the <code>:placeholder-shown</code> pseudo-element. <a href="https://caniuse.com/#feat=css-placeholder-shown">Works in latest Chrome, Safari, and Firefox.</a></p>
+              <img class="mb-4" src="img/logo.svg" alt="" width="72" height="72">              
+              <h1 class="h3 mb-3 font-weight-normal" onclick="hello()">Timestamp converter!</h1>
             </div>
-      
+
             <div class="form-label-group">
-              <input type="number" id="timestamp" class="form-control" placeholder="Timestamp" required autofocus>
+              <input class="form-control" type="number" value="0" id="timestampInput" min="1" pattern= "[0-9]">
               <label>Timestamp</label>
             </div>
-    
-      
-            <button class="btn btn-lg btn-primary btn-block"> Get UTC </button>
-            <button class="btn btn-lg btn-primary btn-block"> Get ISO </button>
 
-            <p class="mt-5 mb-3 text-muted text-center">&copy; 2019</p>
-          </form>
-    <!-- Optional JavaScript -->
+            <button class="btn btn-lg btn-primary btn-block" onclick="timestampUTC()" title="Hit to get UTC format"> Get UTC format </button>
+            <button class="btn btn-lg btn-primary btn-block" onclick="timestampISO()" title="Hit to get ISO format"> Get ISO format</button>
+            <div id="response" align="center"></div>
+
+            <p class="mt-5 mb-3 text-muted text-center"><a href="https://www.linkedin.com/in/ricardo-silva-dublin/"> Ricardo Silva &copy; 2019</a></p>
+            <a href="#">Works in latest Chrome, Safari, and Firefox.</a>
+          </div>
+    <!-- JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="index.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

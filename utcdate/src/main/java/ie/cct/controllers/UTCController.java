@@ -21,6 +21,7 @@ public class UTCController { //public class utcontroller as the folder
     public UTCDate utcTimestamp(@PathVariable("timestamp") Long timestamp){ //variable string because the timestamp is number, path variable to show that it come from the url and the name
         SimpleDateFormat sdf = new SimpleDateFormat(); //create a simple date format
         sdf.setTimeZone(TimeZone.getTimeZone("UTC")); 
+        timestamp = timestamp * 1000;
 
         String result = sdf.format(new Date(timestamp));
 
