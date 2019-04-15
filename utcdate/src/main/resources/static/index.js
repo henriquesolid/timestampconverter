@@ -20,11 +20,13 @@ function timestampISO(){
    http.onreadystatechange = function () {
     if (http.readyState === 4 && http.status === 200) {
         var response = http.responseText;
-        console.log(response);
+        // console.log(response);
         var responseJSON = JSON.parse(response);
-        console.log(responseJSON);
+        // console.log(responseJSON);
+
         var time = responseJSON.time;
         var responseISO = "ISO 8601: <br>" + time;
+        
         document.getElementById('response').innerHTML = responseISO;
     }
   };
