@@ -1,5 +1,14 @@
+hello();
 function hello(){
-window.alert("timestamp example: 1554397502000")}
+var date = new Date();
+var timestamp = date.getTime();
+timestamp = timestamp / 1000;
+timestamp = parseInt(timestamp);
+document.getElementById('timestampNOW').innerHTML = "<code>Timestamp now: " + timestamp + "</code>";
+}
+
+var myVar = setInterval(hello, 1000);
+
 
 function timestampISO(){
    var inputNotNull = document.getElementById('timestampInput').value;
