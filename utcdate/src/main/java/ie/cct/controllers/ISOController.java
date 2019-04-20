@@ -23,7 +23,7 @@ public class ISOController { //public class ISOontroller as the folder
         timestamp = timestamp * 1000;
         // System.out.println("timestamp times 1000: " + timestamp);
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy'T'HH:mm:ss.S'Z'");
-        df.setTimeZone(TimeZone.getTimeZone("UTC"));
+        df.setTimeZone(TimeZone.getDefault());
         String my8601formattedDate = df.format(timestamp);
         
         System.out.println(my8601formattedDate);

@@ -1,13 +1,12 @@
-hello();
 function hello(){
 var date = new Date();
 var timestamp = date.getTime();
 timestamp = timestamp / 1000;
 timestamp = parseInt(timestamp);
-document.getElementById('timestampNOW').innerHTML = "<code>Timestamp now: " + timestamp + "</code>";
+document.getElementById('timestampNOW').innerHTML = "<code>Timestamp now in seconds: <br> " + timestamp + "</code>";
 }
 
-var myVar = setInterval(hello, 1000);
+var dontStop = setInterval(hello, 1000);
 
 
 function timestampISO(){
@@ -23,6 +22,7 @@ function timestampISO(){
 
    var http = new XMLHttpRequest();
    // const url = 'http://localhost:8080/iso/1554397502000';
+   //http://timestampconverter.northeurope.cloudapp.azure.com:8080/utc/0
    const url = "http://localhost:8080/iso/" + timestamp;
 
    http.open("GET", url);
@@ -37,6 +37,7 @@ function timestampISO(){
         var responseISO = "ISO 8601: <br>" + time;
         
         document.getElementById('response').innerHTML = responseISO;
+
     }
   };
   http.send();  
