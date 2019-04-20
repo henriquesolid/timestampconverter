@@ -1,18 +1,28 @@
-function hello(){
-var date = new Date();
-var timestamp = date.getTime();
-timestamp = timestamp / 1000;
-timestamp = parseInt(timestamp);
-document.getElementById('timestampNOW').innerHTML = "<code>Timestamp now in seconds: <br> " + timestamp + "</code>";
+showactualtimestampOne();
+function showactualtimestampOne(){ //function to show the actual timestamp
+  var date = new Date(); //create date
+  var timestamp = date.getTime(); //get timestamp from date
+  timestamp = timestamp / 1000; //divid by 1000 because of seconds
+  timestamp = parseInt(timestamp); //convert to integer
+
+  document.getElementById('timestampInput').value = timestamp; //show the timestamp in the field timestamp, so the user can convert the time now
+  }
+
+function hello(){ //function to show the actual timestamp
+var date = new Date(); //create date
+var timestamp = date.getTime(); //get timestamp from date
+timestamp = timestamp / 1000; //divid by 1000 because of seconds
+timestamp = parseInt(timestamp); //convert to integer
+document.getElementById('timestampNOW').innerHTML = "<code>Timestamp now " + timestamp + "</code>"; //show in the frontend
 }
 
-var dontStop = setInterval(hello, 1000);
+var dontStop = setInterval(hello, 1000); //update the function hello each second, so the timestamp keeps updatign
 
 
-function timestampISO(){
+function timestampISO(){  //api that transform timestamp into date in ISO, java will take the java UTC from the machine
    var inputNotNull = document.getElementById('timestampInput').value;
    inputNotNull = parseInt(inputNotNull);
-   if (isNaN(inputNotNull) || inputNotNull > 9999999999999999999){
+   if (isNaN(inputNotNull) || inputNotNull > 9999999999999999999){ //if the user dont input number or is a number to big for the java API
         document.getElementById('response').innerHTML = "<code>Please enter a valid timestamp!</code>";
     }
 
@@ -34,9 +44,10 @@ function timestampISO(){
         // console.log(responseJSON);
 
         var time = responseJSON.time;
-        var responseISO = "ISO 8601: <br>" + time;
+        var responseISO = time + " - ISO 8601";
         
         document.getElementById('response').innerHTML = responseISO;
+        console.log("to use this api make requests to http://localhost:8080/iso/YOURTIMESTAMP")
 
     }
   };
@@ -45,7 +56,7 @@ function timestampISO(){
 }
 
 
-function timestampUTC(){
+function timestampUTC(){ //same history as below but to UTC
     var inputNotNull = document.getElementById('timestampInput').value;
     inputNotNull = parseInt(inputNotNull);
     if (isNaN(inputNotNull) || inputNotNull > 999999999999999999){
@@ -67,6 +78,8 @@ function timestampUTC(){
          var responseJSON = JSON.parse(response);
          var time = responseJSON.time;
          document.getElementById('response').innerHTML = time;
+         console.log("to use this api make requests to http://localhost:8080/utc/YOURTIMESTAMP")
+
      }
    };
    http.send();  
