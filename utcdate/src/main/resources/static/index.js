@@ -19,6 +19,37 @@ document.getElementById('timestampNOW').innerHTML = "<code>Timestamp now " + tim
 var dontStop = setInterval(hello, 1000); //update the function hello each second, so the timestamp keeps updatign
 
 
+function timestampUTC(){ //same history as below but to UTC
+  var inputNotNull = document.getElementById('timestampInput').value;
+  inputNotNull = parseInt(inputNotNull);
+  if (isNaN(inputNotNull) || inputNotNull > 999999999999999999){
+       document.getElementById('response').innerHTML = "<code>Please enter a valid timestamp!</code>";
+   }
+
+   else {
+   var timestamp;
+   timestamp = document.getElementById('timestampInput').value;  
+
+  var http = new XMLHttpRequest();
+  // const url = 'http://localhost:8080/utc/1554397502000';
+  const url = "http://localhost:8080/utc/" + timestamp;
+
+  http.open("GET", url);
+  http.onreadystatechange = function () {
+   if (http.readyState === 4 && http.status === 200) {
+       var response = http.responseText;
+       var responseJSON = JSON.parse(response);
+       var time = responseJSON.time;
+       document.getElementById('response').innerHTML = time;
+       console.log("to use this api make requests to http://localhost:8080/utc/YOURTIMESTAMP")
+
+   }
+ };
+ http.send();  
+}
+}
+
+var responseISO;
 function timestampISO(){  //api that transform timestamp into date in ISO, java will take the java UTC from the machine
    var inputNotNull = document.getElementById('timestampInput').value;
    inputNotNull = parseInt(inputNotNull);
@@ -44,9 +75,9 @@ function timestampISO(){  //api that transform timestamp into date in ISO, java 
         // console.log(responseJSON);
 
         var time = responseJSON.time;
-        var responseISO = time + " - ISO 8601";
-        
-        document.getElementById('response').innerHTML = responseISO;
+        responseISO = time;
+        time = time + " - ISO 8601";
+        document.getElementById('response').innerHTML = time;
         console.log("to use this api make requests to http://localhost:8080/iso/YOURTIMESTAMP")
 
     }
@@ -54,35 +85,3 @@ function timestampISO(){  //api that transform timestamp into date in ISO, java 
   http.send();  
 }
 }
-
-
-function timestampUTC(){ //same history as below but to UTC
-    var inputNotNull = document.getElementById('timestampInput').value;
-    inputNotNull = parseInt(inputNotNull);
-    if (isNaN(inputNotNull) || inputNotNull > 999999999999999999){
-         document.getElementById('response').innerHTML = "<code>Please enter a valid timestamp!</code>";
-     }
- 
-     else {
-     var timestamp;
-     timestamp = document.getElementById('timestampInput').value;  
- 
-    var http = new XMLHttpRequest();
-    // const url = 'http://localhost:8080/utc/1554397502000';
-    const url = "http://localhost:8080/utc/" + timestamp;
- 
-    http.open("GET", url);
-    http.onreadystatechange = function () {
-     if (http.readyState === 4 && http.status === 200) {
-         var response = http.responseText;
-         var responseJSON = JSON.parse(response);
-         var time = responseJSON.time;
-         document.getElementById('response').innerHTML = time;
-         console.log("to use this api make requests to http://localhost:8080/utc/YOURTIMESTAMP")
-
-     }
-   };
-   http.send();  
- }
- }
- 
