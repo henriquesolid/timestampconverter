@@ -13,7 +13,7 @@ public class UTCController { //public class utcontroller as the folder
 
     @GetMapping("/utc")
     public String utc(){
-        return "wrong url dude! - Try => localhost:8080/utc/663811200";
+        return "wrong url dude! - Try => localhost/utc/663811200";
     }
     
 

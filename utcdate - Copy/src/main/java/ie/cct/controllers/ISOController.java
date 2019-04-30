@@ -13,7 +13,7 @@ public class ISOController { //public class ISOontroller as the folder
 
     @GetMapping("/iso")
     public String iso(){
-        return "wrong url dude! - Try => localhost:8080/iso/663811200";
+        return "wrong url dude! - Try => localhost/iso/663811200";
     }
     
 

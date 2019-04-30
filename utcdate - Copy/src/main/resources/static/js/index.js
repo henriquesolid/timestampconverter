@@ -31,9 +31,9 @@ function timestampUTC(){ //same history as below but to UTC
 
   var http = new XMLHttpRequest();
   // const url = 'http://localhost:8080/utc/1554397502000';
-  const url = "http://35.232.202.67:8080/utc/" + timestamp;
+  const url = "http://localhost:8080/utc/" + timestamp;
 
-
+  http.open("GET", url);
   http.onreadystatechange = function () {
    if (http.readyState === 4 && http.status === 200) {
        var response = http.responseText;
@@ -42,8 +42,7 @@ function timestampUTC(){ //same history as below but to UTC
        document.getElementById('response').innerHTML = time;
        console.log("to use this api make requests to http://localhost:8080/utc/YOURTIMESTAMP")
    }
- }
- http.open("GET", url, true);
+ };
  http.send();  
 }
 }
@@ -62,8 +61,8 @@ function timestampISO(){  //api that transform timestamp into date in ISO, java 
 
    var http = new XMLHttpRequest();
    // const url = 'http://localhost:8080/iso/1554397502000';
-  //  http://35.232.202.67:8080/utc/0
-   const url = "http://35.232.202.67:8080/iso/" + timestamp;
+   //http://timestampconverter.northeurope.cloudapp.azure.com:8080/utc/0
+   const url = "http://localhost:8080/iso/" + timestamp;
 
    http.open("GET", url);
    http.onreadystatechange = function () {
@@ -77,10 +76,7 @@ function timestampISO(){  //api that transform timestamp into date in ISO, java 
         responseISO = time;
         time = time + " - ISO 8601";
         document.getElementById('response').innerHTML = time;
-        console.log("to use this api make requests to http://localhost:8080/iso/YOURTIMESTAMP");
-        //"http://35.232.202.67:8080/iso/"
-        console.log("the location http://35.232.202.67:8080/iso/ is up on Google Cloud");
-        console.log("download available at https://hub.docker.com/r/henriquesolid/timestampconverter");
+        console.log("to use this api make requests to http://localhost:8080/iso/YOURTIMESTAMP")
     }
   };
   http.send();  

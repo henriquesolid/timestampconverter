@@ -12,7 +12,7 @@
 	<artifactId>utcdate</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>utcdate</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Timestamp converter project</description>
 
 	<properties>
 		<java.version>1.8</java.version>
