@@ -32,6 +32,9 @@ function timestampUTC(){ //same history as below but to UTC
   var http = new XMLHttpRequest();
   // const url = 'http://localhost:8080/utc/1554397502000';
   const url = "http://35.232.202.67:8080/utc/" + timestamp;
+  // const url = "http://localhost:8080/utc/" + timestamp;
+  console.log("url below");
+  console.log(url);
 
 
   http.onreadystatechange = function () {
@@ -61,9 +64,10 @@ function timestampISO(){  //api that transform timestamp into date in ISO, java 
     timestamp = document.getElementById('timestampInput').value;  
 
    var http = new XMLHttpRequest();
-   // const url = 'http://localhost:8080/iso/1554397502000';
+    // const url = "http://localhost:8080/iso/" + timestamp;
   //  http://35.232.202.67:8080/utc/0
    const url = "http://35.232.202.67:8080/iso/" + timestamp;
+  
 
    http.open("GET", url);
    http.onreadystatechange = function () {
